@@ -1,0 +1,13 @@
+server:
+  port: 8761 #eureka 默认端口
+eureka:
+  client:
+    register-with-eureka: false #eureka 是否是一个register,必须作为eureka-server
+    fetch-registry: false #eureka 必须当成一个服务server
+    service-url:
+      # defaultZone: http://localhost:8761/eureka #eureka 注册到本身eureka服务上,注册服务(单机版)eureka本身也是client
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+  server: # 一个节点配置
+      waitTimeInMsWhenSyncEmpty: 0

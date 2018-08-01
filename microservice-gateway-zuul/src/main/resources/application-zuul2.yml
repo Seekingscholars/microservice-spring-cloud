@@ -1,0 +1,20 @@
+server:
+  port: 9002 #端口
+eureka:
+  client:
+    #register-with-eureka: false #eureka 是否是一个register,必须作为eureka-server
+    #fetch-registry: false #eureka 必须当成一个服务server
+    service-url:
+      # defaultZone: http://localhost:8761/eureka #eureka 注册到本身eureka服务上,注册服务(单机版)eureka本身也是client
+      defaultZone: http://localhost:8761/eureka
+  #server: # 一个节点配置
+      #waitTimeInMsWhenSyncEmpty: 0
+
+# The preceding example means that HTTP calls to /myusers get forwarded to the users_service service.
+# The route must have a path that can be specified as an ant-style pattern, so /myusers/* only matches one level, but /myusers/** matches hierarchically.
+zuul:
+  ignoredServices: '*' # 所有的微服务 ignored, 拒绝
+  routes:
+    abc: #当前路由唯一
+      path: /user-path/** #使用当前路径名称2 eg: /user-path/* = /user-path/x ; /user-path/** == /user-path/x/x/..
+      serviceId: microservice-provider-user #代理当前微服务1

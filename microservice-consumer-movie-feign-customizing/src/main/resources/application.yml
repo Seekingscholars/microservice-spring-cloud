@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: microservice-consumer-movie-feign-properties
+server:
+  port: 7905
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka #注册eureka服务节点
+      #defaultZone: http://user:password@localhost:8761/eureka #注册eureka服务节点,带密码注册
+  instance:
+    prefer-ip-address: true # 开启ip访问. (默认主机名访问)
+    #主机名:主机:ip:port
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+    health-check-url: http://localhost:8761/eureka
+logging:
+  level:
+    com.itmuch.cloud.feign.UserFeignClient: DEBUG
+

@@ -1,0 +1,22 @@
+server:
+  port: 9003 #端口
+eureka:
+  client:
+    #register-with-eureka: false #eureka 是否是一个register,必须作为eureka-server
+    #fetch-registry: false #eureka 必须当成一个服务server
+    service-url:
+      # defaultZone: http://localhost:8761/eureka #eureka 注册到本身eureka服务上,注册服务(单机版)eureka本身也是client
+      defaultZone: http://localhost:8761/eureka
+  #server: # 一个节点配置
+      #waitTimeInMsWhenSyncEmpty: 0
+
+# The location of the backend can be specified as either a serviceId (for a service from discovery) or a url (for a physical location), as shown in the following example:
+# 后端的位置可以指定为Service ID（用于发现的服务）或URL（用于物理位置），如下面的示例所示：
+# These simple url-routes do not get executed as a HystrixCommand, nor do they load-balance multiple URLs with Ribbon. To achieve those goals, you can specify a serviceId with a static list of servers, as follows:
+# 这些简单的URL路由不作为HySrxScript命令执行，也不使用带来平衡多个URL。为了实现这些目标，您可以指定具有静态服务器列表的Service ID，如下：
+zuul:
+  ignoredServices: '*' # 所有的微服务 ignored, 拒绝
+  routes:
+    abc: #当前路由唯一
+      path: /user-url/** #使用当前路径名称2 eg: /user-path/* = /user-path/x ; /user-path/** == /user-path/x/x/..
+      url: http://localhost:8000/ #代理当前微服务1

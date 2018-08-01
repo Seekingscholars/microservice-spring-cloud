@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: eureka # 项目名称
+  #cloud:
+   # config:
+    #  uri: ${CONFIG_SERVER_URL:http://localhost:8888} #远程配置信息
+# 日志,以及日志登记
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG

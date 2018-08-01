@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: microservice-gateway-zuul #项目名称
+  profiles:
+      # 主要激活哪个配置文件，如果有不清楚的话，可以回头看看 Config 配置相关的知识，比如 springms-config-client、springms-config-server
+      active: zuul4
+  #cloud:
+   # config:
+    #  uri: ${CONFIG_SERVER_URL:http://localhost:8888} #远程配置信息
+# 日志,以及日志登记
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG

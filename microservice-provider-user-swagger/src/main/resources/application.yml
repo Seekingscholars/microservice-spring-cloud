@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: microservice-provider-user-v1 #项目名称
+  profiles:
+      # 主要激活哪个配置文件，如果有不清楚的话，可以回头看看 Config 配置相关的知识，比如 springms-config-client、springms-config-server
+      active: user1
+logging: #日志级别
+  level:
+    root: INFO #日志登记info
+    org.hibernate: INFO #hibernate 日志级别
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE #显示sql绑定数据
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE #显示sql语句
+    com.itmuch: DEBUG

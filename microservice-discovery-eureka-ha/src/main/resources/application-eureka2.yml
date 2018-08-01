@@ -1,0 +1,23 @@
+# 配置 eureka 登录密码，输入地址 http://localhost:8761 时候就需要输入这个用户名密码登录进去
+#spring:
+  #security:
+    #user:
+      #name: admin
+      #password: admin
+server:
+  port: 8762
+eureka:
+  datacenter: SpringCloud   # 修改 http://localhost:8761 地址 Eureka 首页上面 System Status 的 Data center 显示信息
+  environment: product         # 修改 http://localhost:8761 地址 Eureka 首页上面 System Status 的 Environment 显示信息
+  instance:
+    hostname: eureka2
+    instance-id: ${spring.application.name}:${server.port}
+  client:
+    #是否向注册中心注册注册自己
+    #register-with-eureka: false
+    #是否开启检索服务
+    #fetch-registry: false
+    #注册服务地址
+    service-url:
+      #defaultZone: http://admin:admin@eureka2:8762/eureka,http://admin:admin@eureka1:8761/eureka,http://admin:admin@eureka3:8763/eureka
+      defaultZone: http://eureka1:8761/eureka,http://eureka3:8763/eureka

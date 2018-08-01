@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: microservice-file-upload-v1 #项目名称
+logging: #日志级别
+  level:
+    root: INFO #日志登记info
+    com.itmuch: DEBUG

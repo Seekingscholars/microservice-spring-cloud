@@ -1,0 +1,18 @@
+server:
+  port: 9005 #端口
+eureka:
+  client:
+    #register-with-eureka: false #eureka 是否是一个register,必须作为eureka-server
+    #fetch-registry: false #eureka 必须当成一个服务server
+    service-url:
+      # defaultZone: http://localhost:8761/eureka #eureka 注册到本身eureka服务上,注册服务(单机版)eureka本身也是client
+      defaultZone: http://localhost:8761/eureka
+  #server: # 一个节点配置
+      #waitTimeInMsWhenSyncEmpty: 0
+
+# To add a prefix to all mappings, set zuul.prefix to a value, such as /api. By default, the proxy prefix is stripped from the request before the request is forwarded by (you can switch this behavior off with zuul.stripPrefix=false). You can also switch off the stripping of the service-specific prefix from individual routes, as shown in the following example:
+# 全局忽略.
+zuul:
+  ignoredPatterns: /**/admin/**
+  routes:
+    users: /myusers/**

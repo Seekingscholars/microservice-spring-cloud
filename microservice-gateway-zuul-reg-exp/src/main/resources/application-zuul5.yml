@@ -1,0 +1,22 @@
+server:
+  port: 9005 #端口
+eureka:
+  client:
+    #register-with-eureka: false #eureka 是否是一个register,必须作为eureka-server
+    #fetch-registry: false #eureka 必须当成一个服务server
+    service-url:
+      # defaultZone: http://localhost:8761/eureka #eureka 注册到本身eureka服务上,注册服务(单机版)eureka本身也是client
+      defaultZone: http://localhost:8761/eureka
+  #server: # 一个节点配置
+      #waitTimeInMsWhenSyncEmpty: 0
+# 上传大文件使用zuul/* 它会绕过 SpringDiscoveryClient .zuul自己设置上传文件
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 60000
+zuul:
+  ignoredServices: '*' # 所有的微服务 ignored, 拒绝
+  routes:
+    upload-file: #当前路由唯一
+      path: /upload-file/** #使用当前路径名称2 eg: /user-path/* = /user-path/x ; /user-path/** == /user-path/x/x/..
+      serviceId: microservice-file-upload-v1 #代理当前微服务1

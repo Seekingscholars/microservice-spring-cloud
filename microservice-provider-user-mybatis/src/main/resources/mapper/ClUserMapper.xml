@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- cl_user表:用户-账户表模块 -->
+<mapper namespace="com.itmuch.cloud.mapper.ClUserMapper">
+    <!--返回Map-->
+    <resultMap id="BaseResultMap" type="com.itmuch.cloud.pojo.ClUser">
+            <id column="id" property="id" jdbcType="BIGINT" />
+            <result column="uuid" property="uuid" jdbcType="VARCHAR" />
+            <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+            <result column="login_pwd" property="loginPwd" jdbcType="VARCHAR" />
+            <result column="login_pwd_modify_time" property="loginPwdModifyTime" jdbcType="TIMESTAMP" />
+            <result column="login_time" property="loginTime" jdbcType="TIMESTAMP" />
+            <result column="register_time" property="registerTime" jdbcType="TIMESTAMP" />
+            <result column="register_client" property="registerClient" jdbcType="VARCHAR" />
+            <result column="trade_pwd" property="tradePwd" jdbcType="VARCHAR" />
+            <result column="trade_pwd_modify_time" property="tradePwdModifyTime" jdbcType="TIMESTAMP" />
+            <result column="invitation_code" property="invitationCode" jdbcType="VARCHAR" />
+            <result column="channel_id" property="channelId" jdbcType="BIGINT" />
+            <result column="level" property="level" jdbcType="VARCHAR" />
+            <result column="state" property="state" jdbcType="INTEGER" />
+            <result column="remark" property="remark" jdbcType="VARCHAR" />
+            <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+            <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <!--基本的sql查询字段 公共引用...-->
+    <sql id="Base_Column_List">
+    id,uuid,login_name,login_pwd,login_pwd_modify_time,login_time,register_time,register_client,trade_pwd,trade_pwd_modify_time,invitation_code,channel_id,level,state,remark,update_time,create_time 
+    </sql>
+
+    <!-- 基本的sql查询条件公共引用 -->
+    <sql id="searchBy">
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test=" id != null and id != '' ">
+                id  = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="uuid != null and uuid != '' ">
+                and uuid = #{uuid,jdbcType=VARCHAR}
+            </if>
+            <if test="loginName != null and loginName != '' ">
+                and login_name = #{loginName,jdbcType=VARCHAR}
+            </if>
+            <if test="loginPwd != null and loginPwd != '' ">
+                and login_pwd = #{loginPwd,jdbcType=VARCHAR}
+            </if>
+            <if test="loginPwdModifyTime != null">
+                and login_pwd_modify_time = #{loginPwdModifyTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="loginTime != null">
+                and login_time = #{loginTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="registerTime != null">
+                and register_time = #{registerTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="registerClient != null and registerClient != '' ">
+                and register_client = #{registerClient,jdbcType=VARCHAR}
+            </if>
+            <if test="tradePwd != null and tradePwd != '' ">
+                and trade_pwd = #{tradePwd,jdbcType=VARCHAR}
+            </if>
+            <if test="tradePwdModifyTime != null">
+                and trade_pwd_modify_time = #{tradePwdModifyTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="invitationCode != null and invitationCode != '' ">
+                and invitation_code = #{invitationCode,jdbcType=VARCHAR}
+            </if>
+            <if test="channelId != null">
+                and channel_id = #{channelId,jdbcType=BIGINT}
+            </if>
+            <if test="level != null and level != '' ">
+                and level = #{level,jdbcType=VARCHAR}
+            </if>
+            <if test="state != null">
+                and state = #{state,jdbcType=INTEGER}
+            </if>
+            <if test="remark != null and remark != '' ">
+                and remark = #{remark,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+        </trim>
+    </sql>
+
+    <!-- 全量保存数据 -->
+    <insert id="insertOne" parameterType="com.itmuch.cloud.pojo.ClUser">
+        insert into cl_user(uuid,login_name,login_pwd,login_pwd_modify_time,login_time,register_time,register_client,trade_pwd,trade_pwd_modify_time,invitation_code,channel_id,level,state,remark,update_time,create_time)
+        values(#{uuid,jdbcType=VARCHAR},#{loginName,jdbcType=VARCHAR},#{loginPwd,jdbcType=VARCHAR},#{loginPwdModifyTime,jdbcType=TIMESTAMP},#{loginTime,jdbcType=TIMESTAMP},#{registerTime,jdbcType=TIMESTAMP},#{registerClient,jdbcType=VARCHAR},#{tradePwd,jdbcType=VARCHAR},#{tradePwdModifyTime,jdbcType=TIMESTAMP},#{invitationCode,jdbcType=VARCHAR},#{channelId,jdbcType=BIGINT},#{level,jdbcType=VARCHAR},#{state,jdbcType=INTEGER},#{remark,jdbcType=VARCHAR},#{updateTime,jdbcType=TIMESTAMP},#{createTime,jdbcType=TIMESTAMP})
+    </insert>
+
+    <!-- 更新数据 -->
+    <update id="updateBySelective"  parameterType="java.util.HashMap">
+        update cl_user
+        <set>
+            <if test="uuid != null and uuid != '' ">uuid = #{uuid,jdbcType=VARCHAR},</if>
+            <if test="loginName != null and loginName != '' ">login_name = #{loginName,jdbcType=VARCHAR},</if>
+            <if test="loginPwd != null and loginPwd != '' ">login_pwd = #{loginPwd,jdbcType=VARCHAR},</if>
+            <if test="loginPwdModifyTime != null">login_pwd_modify_time = #{loginPwdModifyTime,jdbcType=TIMESTAMP},</if>
+            <if test="loginTime != null">login_time = #{loginTime,jdbcType=TIMESTAMP},</if>
+            <if test="registerTime != null">register_time = #{registerTime,jdbcType=TIMESTAMP},</if>
+            <if test="registerClient != null and registerClient != '' ">register_client = #{registerClient,jdbcType=VARCHAR},</if>
+            <if test="tradePwd != null and tradePwd != '' ">trade_pwd = #{tradePwd,jdbcType=VARCHAR},</if>
+            <if test="tradePwdModifyTime != null">trade_pwd_modify_time = #{tradePwdModifyTime,jdbcType=TIMESTAMP},</if>
+            <if test="invitationCode != null and invitationCode != '' ">invitation_code = #{invitationCode,jdbcType=VARCHAR},</if>
+            <if test="channelId != null">channel_id = #{channelId,jdbcType=BIGINT},</if>
+            <if test="level != null and level != '' ">level = #{level,jdbcType=VARCHAR},</if>
+            <if test="state != null">state = #{state,jdbcType=INTEGER},</if>
+            <if test="remark != null and remark != '' ">remark = #{remark,jdbcType=VARCHAR},</if>
+            <if test="updateTime != null">update_time = #{updateTime,jdbcType=TIMESTAMP},</if>
+            <if test="createTime != null">create_time = #{createTime,jdbcType=TIMESTAMP}</if>
+        </set>
+        where id = #{id ,jdbcType=INTEGER}
+    </update>
+
+    <!-- 查询唯一 -->
+    <select id="queryByPrimary" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List" />
+        from cl_user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <!-- 模糊匹配 -->
+    <select id="queryBySelective" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from cl_user
+        <include refid="searchBy"/>
+    </select>
+
+    <!-- 一般应用分页 -->
+    <select id="queryListSelective" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from cl_user
+        <include refid="searchBy"/>
+    </select>
+
+</mapper>

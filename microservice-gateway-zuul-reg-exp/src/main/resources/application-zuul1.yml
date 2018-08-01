@@ -1,0 +1,24 @@
+server:
+  port: 9005 #端口
+eureka:
+  client:
+    #register-with-eureka: false #eureka 是否是一个register,必须作为eureka-server
+    #fetch-registry: false #eureka 必须当成一个服务server
+    service-url:
+      # defaultZone: http://localhost:8761/eureka #eureka 注册到本身eureka服务上,注册服务(单机版)eureka本身也是client
+      defaultZone: http://localhost:8761/eureka
+  #server: # 一个节点配置
+      #waitTimeInMsWhenSyncEmpty: 0
+
+# You can provide a convention between serviceId and routes by using regexmapper. It uses regular-expression named groups to extract variables from serviceId and inject them into a route pattern, as shown in the following example:
+# 您可以通过使用RexExpPad提供Service ID和路由之间的约定。它使用名为组的正则表达式从Service ID中提取变量，并将它们注入到路由模式中，如下面的示例所示：
+# regexmapper
+# variables from serviceId
+
+# The preceding example means that a serviceId of myusers-v1 is mapped to route /v1/myusers/**. Any regular expression is accepted, but all named groups must be present in both servicePattern and routePattern. If servicePattern does not match a serviceId, the default behavior is used. In the preceding example, a serviceId of myusers is mapped to the "/myusers/**" route (with no version detected). This feature is disabled by default and only applies to discovered services.
+# 前面的示例意味着MyULSRV1的Service ID被映射到路由/V1/MyValue/**。任何正则表达式都被接受，但是所有命名的组都必须存在于Service EpATTrn和RoutType中。如果Service EpATTrn不匹配Service ID，则使用默认行为。在前面的示例中，MyServices的Service ID被映射到“/MyAsvs/**”路由（没有检测到版本）。默认情况下禁用此功能，仅适用于已发现的服务。
+
+
+# eg:
+# project-name-v1 适合这种做法. eg: microservice-provider-user-v1
+# zuul/v1/project-name/path

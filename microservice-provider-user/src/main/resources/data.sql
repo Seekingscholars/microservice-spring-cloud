@@ -1,0 +1,10 @@
+INSERT  into user (id,username,name,age,balance) VALUES (1,'user1','张三',21,100.01);
+INSERT  into user (id,username,name,age,balance) VALUES (2,'user2','李四',22,100.02);
+INSERT  into user (id,username,name,age,balance) VALUES (3,'user3','王五',23,100.03);
+INSERT  into user (id,username,name,age,balance) VALUES (4,'user4','马六',24,100.04);
+INSERT  into user (id,username,name,age,balance) VALUES (5,'user5','天使',25,100.05);
+INSERT  into user (id,username,name,age,balance) VALUES (6,'user6','恶魔',26,100.06);
+INSERT  into user (id,username,name,age,balance) VALUES (7,'user7','魔鬼',27,100.07);
+INSERT  into user (id,username,name,age,balance) VALUES (8,'user8','骑士',28,100.08);
+INSERT  into user (id,username,name,age,balance) VALUES (9,'user9','法师',29,100.09);
+INSERT  into user (id,username,name,age,balance) VALUES (10,'user10','骷髅',30,100.10);

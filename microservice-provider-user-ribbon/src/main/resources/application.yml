@@ -1,0 +1,33 @@
+server:
+  port: 8001
+spring:
+  jpa:
+    generate-ddl: false #ddl启动.
+    show-sql: true #显示sql语句
+    hibernate:
+      ddl-auto: none #不启用hibernate
+  datasource: #数据源
+    platform: h2
+    data: classpath:data.sql
+    schema: classpath:schema.sql
+  application:
+    name: microservice-provider-user-ribbon #[服务代理名称]大小写敏感,最好全部小写! 混淆后出现意向不到的问题
+logging: #日志级别
+  level:
+    root: INFO #日志登记info
+    org.hibernate: INFO #hibernate 日志级别
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE #显示sql绑定数据
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE #显示sql语句
+    com.itmuch: DEBUG
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:8761/eureka #http://localhost:8761/eureka #注册eureka服务节点
+      #defaultZone: http://user:password@localhost:8761/eureka #注册eureka服务节点,带密码注册
+  instance:
+    prefer-ip-address: true # 开启ip访问. (默认主机名访问)
+    #主机名:主机ip:port
+    instance-id: ${spring.application.name}:${server.port}
+    #health-check-url: http://localhost:8761/eureka
+
+
